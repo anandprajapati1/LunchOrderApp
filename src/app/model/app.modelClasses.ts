@@ -6,7 +6,7 @@ export class MealOptions {
     Remarks: string = "";
 }
 export class Order {
-    _id:string="";
+    _id?:string;
     OptionId: string = "";
     Count: number = 0;
     Remarks: string = "";

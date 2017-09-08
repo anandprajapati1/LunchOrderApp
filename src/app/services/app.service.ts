@@ -12,15 +12,21 @@ export class DataService {
   constructor(private http: Http) { }
 
   getMealOptions(): Promise<MealOptions[]> {
-    return this.http.get(`${this.baseUrl}/getMealOptions`, this.headers).toPromise()
+    return this.http.get(`${this.baseUrl}/getMealOptions`, { headers: this.headers }).toPromise()
       .then(response => response.json() as MealOptions[])
       .catch(this.handleError);
   }
 
   placeOrder(order: Order): Promise<Order> {
     const url = `${this.baseUrl}/placeOrder`;
-    return this.http.post(url, JSON.stringify(order), { headers: this.headers }).toPromise()
-      .then(res => order).catch(this.handleError);
+    return this.http.post(url, order, { headers: this.headers }).toPromise()
+      .then(res => {
+        if (res != null) {
+          // console.log(res);
+          return res.json() as Order;
+        }
+      }
+      ).catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {

@@ -1,0 +1,17 @@
+@media screen and (min-width: 1199px) {
+    .container {
+      max-width: 600px;
+      position: relative;
+      height: 100vh;
+    }
+    .card{
+        padding: 15px;
+    }
+  }
+  .form-control[name='totalCost']{
+      text-align: right;
+  }
+  /* .form-control[required].ng-touched.ng-invalid[required].ng-touched{
+    border-color: rgba(210, 55, 55, 0.48);
+  } */
+  

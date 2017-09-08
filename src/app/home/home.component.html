@@ -36,8 +36,8 @@
                         <div class="form-group">
                             <label for="selectedMealOption">Options</label>
                             <select class="custom-select form-control" [(ngModel)]="selectedOption" name="selectedMealOption" #option="ngModel" required>
-                                <option *ngFor="let o of mealOptions" [ngValue]="o" [attr.data-price]="o.Price">{{o.OptionDetail}}</option>
-                            </select>
+                              <option *ngFor="let o of mealOptions" [ngValue]="o" [attr.data-price]="o.Price">{{o.OptionDetail}}</option>
+                          </select>
                             <div [hidden]="!(selectedOption.Price<=0 && (option.dirty || option.touched))" class="alert alert-danger">
                                 Please select quantity
                             </div>
@@ -47,9 +47,9 @@
                         <div class="form-group">
                             <label for="selected-quantity">How many?</label>
                             <select class="custom-select form-control" [(ngModel)]="selectedQuantity" name="selected-quantity" #qty="ngModel" required>
-                                <option value="0">- select -</option>
-                                <option *ngFor="let q of _quantity" [ngValue]="q">{{q}}</option>
-                            </select>
+                              <option value="0">- select -</option>
+                              <option *ngFor="let q of _quantity" [ngValue]="q">{{q}}</option>
+                          </select>
                             <div [hidden]="!(selectedQuantity<=0 && (qty.dirty || qty.touched))" class="alert alert-danger">
                                 Please select quantity
                             </div>
@@ -79,5 +79,4 @@
             </form>
         </div>
     </div>
-
 </div>
