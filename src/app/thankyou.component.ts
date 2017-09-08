@@ -1,7 +1,7 @@
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Order } from '../app/model/app.modelClasses'
 
 
@@ -26,11 +26,21 @@ import { Order } from '../app/model/app.modelClasses'
 
 export class ThankYouComponent implements OnInit {
   _orderid: string;
-  constructor(private route: ActivatedRoute) {
-  }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.map((paramArr: Params) => paramArr['id'])
-      .subscribe((h: string) => this._orderid = h)
+      .subscribe((h: string) => {
+        if (!h) {
+          this.goHome();
+          return false;
+        }
+        else
+          this._orderid = h
+      })
+  }
+
+  goHome(): void {
+    this.router.navigate(['home']);
   }
 }

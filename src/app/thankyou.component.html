@@ -1,7 +1,7 @@
 <div class="wrapper">
     <div class="alert alert-success">
         <h3>Thank You for your order!</h3>
-        <p>Your order id is {{_orderid}}</p>
+        <p>Your order id is <b>{{_orderid}}</b></p>
     </div>
-    <a class="btn btn-success" [routerLink]="['/']" role="button">Go Back</a>
+    <a class="btn btn-success" (click)="goHome()" role="button">Go Back</a>
 </div>
