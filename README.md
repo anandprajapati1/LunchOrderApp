@@ -14,7 +14,7 @@ Clone repository and run following command in command prompt/terminal(in root fo
 npm install
 ```
 This will install dependencies in your local application environment.
-Now set service base url into **hero.service.ts**. Eg-
+Now set service base url into **app.service.ts**. Eg-
 ```
 private baseUrl = 'http://localhost:3000';
 ```
@@ -25,7 +25,6 @@ Run following command in command prompt/terminal(in root folder)
 npm start
 ```
 This will start application and run in browser on default port 3001. And thats all!
-If your server is up and running, this application will work as the default hero app.
 
 
 ## Further help
