@@ -4,7 +4,7 @@ However in this example, We have implemented basic CRUD operations using REST se
 
 ## Pre-requisites
 Node and npm should be installed. Since all code is done in typescript, so typescript compiler must be installed as well.
-Also, **since we are gonna use REST services, so first we have to set that up locally. For that, please use [this repository](https://github.com/anandprajapati1/CRUD-operation-using-mongo-node). 
+Also, **since we are gonna use REST services, so first we have to set that up locally. For that, please use [this repository](https://github.com/anandprajapati1/MealOrderAppServer). 
 Just follow simple steps given and you are all set!**
 
 ## Getting Started

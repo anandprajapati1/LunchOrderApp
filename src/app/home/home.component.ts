@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MealOptions, Order } from '../model/app.modelClasses'
+import { MealOptions, Order, UserLogin } from '../model/app.modelClasses'
 import { DataService } from '../services/app.service'
 
 @Component({
@@ -22,6 +22,12 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
+    //>> Redirect to login page if not logged in
+    if (!this.dataService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+      return
+    }
+    
     this.dataService.getMealOptions().then(x => {
       if (x.length) this.mealOptions = x.slice(0, 5);
       this.mealOptions.unshift(this.defaultMealOption);

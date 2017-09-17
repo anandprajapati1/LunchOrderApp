@@ -4,10 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from '../app/app.component';
 import { ThankYouComponent } from "../app/thankyou.component";
 import { HomeComponent } from "../app/home/home.component";
+import { LoginComponent } from "../app/login/login.component";
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
+    { path: 'login', component: LoginComponent },
     // { path: 'thankyou', component: ThankYouComponent },
     { path: 'thankyou/:id', component: ThankYouComponent },
     { path: '**', redirectTo: '/home', pathMatch: 'full' }
