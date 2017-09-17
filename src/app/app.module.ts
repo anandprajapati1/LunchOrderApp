@@ -9,10 +9,11 @@ import { DataService } from '../app/services/app.service';
 import { AppComponent } from './app.component';
 import { ThankYouComponent } from './thankyou.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent, ThankYouComponent, HomeComponent
+    AppComponent, ThankYouComponent, HomeComponent, LoginComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, AppRoutingModule

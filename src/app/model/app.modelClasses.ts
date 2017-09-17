@@ -6,7 +6,7 @@ export class MealOptions {
     Remarks: string = "";
 }
 export class Order {
-    _id?:string;
+    _id?: string;
     OptionId: string = "";
     Count: number = 0;
     Remarks: string = "";
@@ -15,4 +15,23 @@ export class Order {
     IsActive: boolean = true;
     CreatedOn: Date = new Date();
     CreatedBy: string = "";
+}
+export class User {
+    _id?: string;
+    EmailId: string = "";
+    CreatedOn: Date = new Date();
+}
+export class UserLogin extends User {
+    Password: string = "";
+}
+
+export class loginData {
+    EmailId: string;
+    Password: string;
+    rememberMe: boolean;
+}
+export class loginResponse {
+    isUsernameValid: boolean;
+    isPasswordValid: boolean;
+    userId: string;
 }

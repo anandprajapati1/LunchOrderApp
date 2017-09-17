@@ -1,10 +1,27 @@
 <div class="wrapper">
-    <form class="form-signin">
+    <form class="form-signin" (submit)="doLogin()" novalidate>
         <h2 class="form-signin-heading">Please login</h2>
-        <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
-        <input type="password" class="form-control" name="password" placeholder="Password" required="" />
+        <div class="alert alert-danger" *ngIf="serverError">
+            {{serverError}}
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="emailid1" [(ngModel)]="_data.EmailId" #email="ngModel" pattern="\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}"
+            placeholder="Email Id" required/>
+            <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+                <div [hidden]="!email.errors.required">Please provide email id</div>
+                <div [hidden]="!email.errors.pattern">Invalid email id</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password1" [(ngModel)]="_data.Password" #pass="ngModel" placeholder="Password" required 
+            pattern="(?=.*\d).{8,20}" />
+            <div *ngIf="pass.errors && (pass.dirty || pass.touched)" class="alert alert-danger">
+                <div [hidden]="!pass.errors.required">Please provide password</div>
+                <div [hidden]="!pass.errors.pattern">Password should be of at least 8 and max 20 characters</div>
+            </div>
+        </div>
         <label class="checkbox">
-          <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+          <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe" [(ngModel)]="_data.rememberMe"> Remember me
         </label>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     </form>

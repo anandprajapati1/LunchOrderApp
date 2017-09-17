@@ -29,6 +29,7 @@ body {
     font-size: 16px;
     height: auto;
     padding: 10px;
+    border-radius: 0;
 }
 
 .form-signin .form-control:focus {
@@ -37,12 +38,20 @@ body {
 
 .form-signin input[type="text"] {
     margin-bottom: -1px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    /* border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; */
 }
 
 .form-signin input[type="password"] {
-    margin-bottom: 20px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    /* margin-bottom: 20px; */
+    /* border-top-left-radius: 0;
+    border-top-right-radius: 0; */
+}
+
+.alert{
+    border-radius: 0;
+    padding: 3px 10px;
+    font-size: .8em;
+    /* border-top-left-radius: 0;
+    border-top-right-radius: 0; */
 }
