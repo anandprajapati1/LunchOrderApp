@@ -1,0 +1,46 @@
+<div class="header-blue">
+    <nav class="navbar navbar-default navigation-clean-search">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand navbar-link" href="#">Are you Hungry?</a>
+                <!-- <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button> -->
+                <span class="float-right">
+                    <a class="btn btn-default action-button login" [routerLink]="['/login']" [hidden]="_isLoggedIn">Log In</a>
+                    <a class="btn btn-default action-button" role="button" [hidden]="_isLoggedIn">Sign Up</a>
+                    <a class="btn btn-default action-button" role="button" (click)="_logoutClick()" [hidden]="!_isLoggedIn">Log Out</a>
+                </span>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="active" role="presentation"><a href="#">Link</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation"><a href="#">First Item</a></li>
+                            <li role="presentation"><a href="#">Second Item</a></li>
+                            <li role="presentation"><a href="#">Third Item</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" target="_self">
+                    <div class="form-group">
+                        <label class="control-label" for="search-field"><i class="glyphicon glyphicon-search"></i></label>
+                        <input class="form-control search-field" type="search" name="search" id="search-field">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+    <!-- <div class="container hero">
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 col-md-6 col-md-offset-0">
+                <button class="btn btn-default btn-lg action-button" type="button">Learn More</button>
+            </div>
+        </div>
+    </div> -->
+</div>
