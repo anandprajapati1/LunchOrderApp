@@ -6,7 +6,7 @@ import { SharedService } from '../app/services/shared-service.service';
 
 @Component({
   selector: 'app-root',
-  template: `<app-header [_isLoggedIn]="loginStatus" (loggedOut)="handleLogoutClick()"></app-header>
+  template: `<app-header (loggedOut)="handleLogoutClick()"></app-header>
   <router-outlet></router-outlet>`,
   styles: [``]
 })

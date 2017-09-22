@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DataService } from "../services/app.service";
+import { SharedService } from "../services/shared-service.service";
 import { Router } from '@angular/router';
 import { Observable } from "rxjs";
 
@@ -14,7 +15,9 @@ export class HeaderComponent implements OnInit {
   loggedOut: EventEmitter<void> = new EventEmitter();
   @Input()
   _isLoggedIn: boolean = false;
-  constructor(private _dataservice: DataService) { }
+  constructor(private _dataservice: DataService, private _sharedService: SharedService) {
+    _sharedService.loginStatus$.subscribe(x => this._isLoggedIn = x)
+  }
 
   ngOnInit() {
     this._isLoggedIn = this._dataservice.isLoggedIn()
@@ -25,5 +28,4 @@ export class HeaderComponent implements OnInit {
     this._isLoggedIn = false;
     this.loggedOut.emit();
   }
-
 }

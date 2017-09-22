@@ -48,6 +48,9 @@
 .header-blue .navbar .navbar-brand {
     font-weight: bold;
     color: inherit;
+    width: 40px;
+	height: 20px;
+	padding: 0;
 }
 
 .header-blue .navbar .navbar-brand:hover {
@@ -56,9 +59,12 @@
 
 .header-blue .navbar .navbar-brand img {
     height: 100%;
-    display: inline-block;
+    /* display: inline-block; */
     margin-right: 10px;
-    width: auto;
+    width: 130px;
+	height: auto;
+	float: left;
+	margin-top: -20px;
 }
 
 .header-blue .navbar .navbar-collapse p {
@@ -175,7 +181,8 @@
 }
 
 .header-blue .action-button:hover {
-    color: #fff;
+    color: #44649e;
+    background: white;
 }
 
 .header-blue .action-button.btn-lg {
@@ -241,3 +248,22 @@
     margin-bottom: 30px;
     font-weight: 300;
 }
+
+.navbar{
+}
+.navbar-menu{
+    display: inline-block;
+    margin: 0 0 0 70px;
+    padding: 0;
+}
+.navbar-menu-item{
+    display: inline-block;
+}
+.navbar-menu-item>a{
+    padding: 0 20px;
+    color: white;
+}
+.navbar-menu-item>a:hover, .navbar-menu-item>a:focus{
+    color: white;
+    text-decoration: underline;
+}    
