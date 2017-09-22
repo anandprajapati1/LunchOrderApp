@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from "@angular/router";
 import { DataService } from "../services/app.service";
+import { SharedService } from '../services/shared-service.service';
 import { loginData, loginResponse } from "../model/app.modelClasses";
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   // _rememberMe: boolean = false;
   _data: loginData = new loginData();
   serverError: string;
-  constructor(private dataservice: DataService, private _router: Router) { }
+  constructor(private dataservice: DataService, private _router: Router, private sharedservice:SharedService) { }
 
   ngOnInit() {
     //>> Redirect to home page if already logged in
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
       }
       else if (x.userId) {
         this._router.navigate(['/home'])
+        this.sharedservice.emitLoginStatus(true);
       }
     })
       .catch(() => this.serverError = "Unable to login, please try after some time.")
