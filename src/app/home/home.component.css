@@ -11,6 +11,9 @@
   .form-control[name='totalCost']{
       text-align: right;
   }
+  .btn-container{
+    text-align: right;
+  }
   /* .form-control[required].ng-touched.ng-invalid[required].ng-touched{
     border-color: rgba(210, 55, 55, 0.48);
   } */

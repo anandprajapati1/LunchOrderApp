@@ -11,7 +11,7 @@
     <div class="card">
         <div class="card-body">
             <form (submit)="submitForm()" #myform="ngForm" novalidate>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col">
                         <div class="form-group">
                             <label for="emailid">Email address</label>
@@ -28,9 +28,9 @@
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <label for="selectedMealOption">Options</label>
                             <select class="custom-select form-control" [(ngModel)]="selectedOption" name="selectedMealOption" #option="ngModel" required>
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <label for="selected-quantity">How many?</label>
                             <select class="custom-select form-control" [(ngModel)]="selectedQuantity" name="selected-quantity" #qty="ngModel" required>
@@ -73,7 +73,9 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!(myform.form.valid && selectedQuantity>0 && selectedOption.Price>0)">Submit</button>
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-primary" [disabled]="!(myform.form.valid && selectedQuantity>0 && selectedOption.Price>0)">Submit</button>
+                </div>
             </form>
         </div>
     </div>

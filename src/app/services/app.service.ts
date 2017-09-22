@@ -14,6 +14,9 @@ export class DataService {
 
 	constructor(private http: Http) { }
 
+	getCurrentUserId(): string {
+		return localStorage.getItem(this.isUserLoggedInKey) || sessionStorage.getItem(this.isUserLoggedInKey)
+	}
 	isLoggedIn(): boolean {
 		let today: Date = new Date();
 		today.setDate(today.getDate() - 30);
