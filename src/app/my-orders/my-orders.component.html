@@ -1,0 +1,47 @@
+<h3 class="page-headeing">My Orders</h3>
+<br>
+<div class="container">
+    <div class="row filter">
+        <div class="col-sm-4">Product Description</div>
+        <div class="col-sm-2">Status</div>
+        <div class="col-sm-2">Date</div>
+        <div class="col-sm-3">Order No.</div>
+        <div class="col-sm-1">Price</div>
+    </div>
+    <!-- <div class="row order-data">
+        <div class="col-sm-12"> -->
+    <div class="row order-item" *ngFor="let order of orderList">
+        <div class="col-sm-4">
+            <img src="../../assets/order-default.png" width="50px" height="50px" alt="sample image">
+            <div class="order-detail">
+                {{order.OrderedMeal[0].OptionDetail}}
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="order-status">
+                <span class="badge badge-success"></span>
+                <div [class]="'badge ' + (order.IsAccepted?'badge-success':'badge-danger')">{{order.IsAccepted?"Accepted":"Not Accepted"}}</div>
+                <div [class]="'badge ' + (order.IsPaid?'badge-success':'badge-danger')">{{order.IsPaid?"Paid":"Not Paid"}}</div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="order-date">{{order.CreatedOn|date: 'dd-MM-yyyy hh:mm a'}}</div>
+        </div>
+        <div class="col-sm-3">
+            <div class="order-id">
+				<span class="bg-info">
+					{{order._id}}
+				</span>
+                <div *ngIf="order.Remarks" class="small"><b>Your remarks:</b> {{order.Remarks}}</div>
+            </div>
+        </div>
+        <div class="col-sm-1">
+            <div class="small">{{order.Count +' * '+order.OrderedMeal[0].Price}}</div>
+            <div class="price-total">
+                Rs {{order.Count*order.OrderedMeal[0].Price}}
+            </div>
+        </div>
+    </div>
+    <!-- </div>
+    </div> -->
+</div>

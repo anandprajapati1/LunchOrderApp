@@ -12,10 +12,11 @@ import { ThankYouComponent } from './thankyou.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 @NgModule({
   declarations: [
-    AppComponent, ThankYouComponent, HomeComponent, LoginComponent, HeaderComponent
+    AppComponent, ThankYouComponent, HomeComponent, LoginComponent, HeaderComponent, MyOrdersComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, AppRoutingModule

@@ -5,11 +5,13 @@ import { AppComponent } from '../app/app.component';
 import { ThankYouComponent } from "../app/thankyou.component";
 import { HomeComponent } from "../app/home/home.component";
 import { LoginComponent } from "../app/login/login.component";
+import { MyOrdersComponent } from "../app/my-orders/my-orders.component";
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'Orders', component: MyOrdersComponent },
     // { path: 'thankyou', component: ThankYouComponent },
     { path: 'thankyou/:id', component: ThankYouComponent },
     { path: '**', redirectTo: '/home', pathMatch: 'full' }

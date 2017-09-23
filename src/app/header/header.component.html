@@ -1,4 +1,4 @@
-<div class="header-blue">
+<div [class]="'header-blue '+(_isScrolled?'scrolled':'')">
     <nav class="navbar navbar-default navigation-clean-search">
         <div class="container">
             <div class="navbar-header">
@@ -7,7 +7,7 @@
                 </a>
                 <ul class="navbar-menu" *ngIf="_isLoggedIn">
                     <li class="navbar-menu-item">
-                        <a href="#">My Orders</a>
+                        <a [routerLink]="['/Orders']">My Orders</a>
                     </li>
                 </ul>
                 <!-- <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1">

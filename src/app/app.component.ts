@@ -7,8 +7,16 @@ import { SharedService } from '../app/services/shared-service.service';
 @Component({
   selector: 'app-root',
   template: `<app-header (loggedOut)="handleLogoutClick()"></app-header>
-  <router-outlet></router-outlet>`,
-  styles: [``]
+  <div class="wrapper">
+    <router-outlet></router-outlet>
+  </div>`,
+  styles: [`
+  .wrapper{
+    max-width: 1100px;
+    margin: auto;
+    padding-top: 30px;
+  }
+  `]
 })
 export class AppComponent {
   loginStatus: boolean = false;

@@ -21,6 +21,9 @@ import { Order } from '../app/model/app.modelClasses'
     display: table;
     text-align: center;
   }
+  .btn{
+    margin: 0 10px;
+  }
   `]
 })
 

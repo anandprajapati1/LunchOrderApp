@@ -64,7 +64,10 @@
     width: 130px;
 	height: auto;
 	float: left;
-	margin-top: -20px;
+    margin-top: -20px;
+    -webkit-transition: all ease .3s;
+    -moz-transition: all ease .3s;
+    transition: all ease .3s;
 }
 
 .header-blue .navbar .navbar-collapse p {
@@ -249,12 +252,13 @@
     font-weight: 300;
 }
 
-.navbar{
-}
 .navbar-menu{
     display: inline-block;
     margin: 0 0 0 70px;
     padding: 0;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
 }
 .navbar-menu-item{
     display: inline-block;
@@ -263,7 +267,18 @@
     padding: 0 20px;
     color: white;
 }
-.navbar-menu-item>a:hover, .navbar-menu-item>a:focus{
+.navbar-menu-item>a:focus{
+    text-decoration: none;
+}
+.navbar-menu-item>a:hover{
     color: white;
     text-decoration: underline;
-}    
+}
+
+.header-blue.scrolled .navbar .navbar-brand img{
+    width: 50px;
+    margin-top: -10px;
+}
+.header-blue.scrolled .navbar-menu{
+    margin-left: 0;
+}

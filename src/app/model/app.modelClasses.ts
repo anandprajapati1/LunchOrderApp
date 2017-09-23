@@ -3,7 +3,7 @@ export class MealOptions {
     OptionDetail: string = "- select -";
     Price: number = 0;
     IsActive: boolean = true;
-    Remarks: string = "";
+    // Remarks: string = "";
 }
 export class Order {
     _id?: string;
@@ -15,6 +15,10 @@ export class Order {
     IsActive: boolean = true;
     CreatedOn: Date = new Date();
     CreatedBy: string = "";
+}
+
+export class UserOrders extends Order {
+    OrderedMeal: MealOptions[];
 }
 export class User {
     _id?: string;
