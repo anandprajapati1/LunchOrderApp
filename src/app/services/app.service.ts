@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 
 import { Observable } from 'rxjs'
 import 'rxjs/add/operator/toPromise';
-import { MealOptions, Order, UserLogin, loginData, loginResponse } from '../model/app.modelClasses';
+import { MealOptions, Order, UserOrders, UserLogin, loginData, loginResponse } from '../model/app.modelClasses';
 
 @Injectable()
 export class DataService {
@@ -14,6 +14,9 @@ export class DataService {
 
 	constructor(private http: Http) { }
 
+	getCurrentUserId(): string {
+		return localStorage.getItem(this.isUserLoggedInKey) || sessionStorage.getItem(this.isUserLoggedInKey)
+	}
 	isLoggedIn(): boolean {
 		let today: Date = new Date();
 		today.setDate(today.getDate() - 30);
@@ -85,6 +88,12 @@ export class DataService {
 				}
 			}
 			).catch(this.handleError);
+	}
+
+	getUserOrderList(userid: string): Promise<UserOrders[]> {
+		return this.http.get(`${this.baseUrl}/getUserOrders/${userid}`, { headers: this._headers }).toPromise()
+			.then(res => res.json() as UserOrders[])
+			.catch(this.handleError);
 	}
 
 	private handleError(error: any): Promise<any> {

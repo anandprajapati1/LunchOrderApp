@@ -10,7 +10,7 @@ import { DataService } from '../services/app.service'
 })
 export class HomeComponent implements OnInit {
 
-  _emailid: string = "";
+  // _emailid: string = "";
   _comments: string = "";
   _quantity: number[] = [1, 2, 3, 4, 5];
   mealOptions: MealOptions[] = [];
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   submitForm(): void {
     let orderDetail: Order = new Order();
     orderDetail.Count = this.selectedQuantity;
-    orderDetail.CreatedBy = this._emailid;
+    orderDetail.CreatedBy = this.dataService.getCurrentUserId();
     orderDetail.Remarks = this._comments;
     orderDetail.OptionId = this.selectedOption._id;
 

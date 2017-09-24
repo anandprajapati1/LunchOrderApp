@@ -3,5 +3,6 @@
         <h3>Thank You for your order!</h3>
         <p>Your order id is <b>{{_orderid}}</b></p>
     </div>
-    <a class="btn btn-success" (click)="goHome()" role="button">Go Back</a>
+    <button class="btn btn-success" (click)="goHome()" role="button">Go Back</button>
+    <button class="btn btn-success" [routerLink]="['/Orders']" role="button">View All Orders</button>
 </div>
