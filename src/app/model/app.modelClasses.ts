@@ -25,7 +25,7 @@ export class User {
     EmailId: string = "";
     CreatedOn: Date = new Date();
 }
-export class UserLogin extends User {
+export class registrationData extends User {
     Password: string = "";
 }
 
@@ -38,4 +38,10 @@ export class loginResponse {
     isUsernameValid: boolean;
     isPasswordValid: boolean;
     userId: string;
+}
+
+export class registrationResponse {
+    isAlreadyRegistered: boolean;
+    isRegistered:boolean;
+    userId?: string;
 }

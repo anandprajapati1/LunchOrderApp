@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MealOptions, Order, UserLogin } from '../model/app.modelClasses'
+import { MealOptions, Order } from '../model/app.modelClasses'
 import { DataService } from '../services/app.service'
 
 @Component({
