@@ -8,8 +8,6 @@
         <div class="col-sm-3">Order No.</div>
         <div class="col-sm-1">Price</div>
     </div>
-    <!-- <div class="row order-data">
-        <div class="col-sm-12"> -->
     <div class="row order-item" *ngFor="let order of orderList">
         <div class="col-sm-4">
             <img src="../../assets/order-default.png" width="50px" height="50px" alt="sample image">
@@ -20,8 +18,9 @@
         <div class="col-sm-2">
             <div class="order-status">
                 <span class="badge badge-success"></span>
-                <div [class]="'badge ' + (order.IsAccepted?'badge-success':'badge-danger')">{{order.IsAccepted?"Accepted":"Not Accepted"}}</div>
-                <div [class]="'badge ' + (order.IsPaid?'badge-success':'badge-danger')">{{order.IsPaid?"Paid":"Not Paid"}}</div>
+                <div *ngIf="order.IsActive" [class]="'badge ' + (order.IsAccepted?'badge-success':'badge-warning')">{{order.IsAccepted?"Accepted":"Not Accepted"}}</div>
+                <div *ngIf="order.IsActive" [class]="'badge ' + (order.IsPaid?'badge-success':'badge-warning')">{{order.IsPaid?"Paid":"Not Paid"}}</div>
+                <div *ngIf="!order.IsActive" class="badge badge-danger">Cancelled</div>
             </div>
         </div>
         <div class="col-sm-2">
@@ -29,7 +28,7 @@
         </div>
         <div class="col-sm-3">
             <div class="order-id">
-				<span class="bg-info">
+                <span class="bg-info">
 					{{order._id}}
 				</span>
                 <div *ngIf="order.Remarks" class="small"><b>Your remarks:</b> {{order.Remarks}}</div>
@@ -40,8 +39,10 @@
             <div class="price-total">
                 Rs {{order.Count*order.OrderedMeal[0].Price}}
             </div>
+            <div class="action-button">
+                <a (click)="cancelOrder(order)" [hidden]="!order.IsActive" [class]="((order.IsAccepted||order.IsPaid)?' disabled':'')+' fa fa-times'" title="Cancel order"></a>
+                <a (click)="repeatOrder(order)" class="fa fa-repeat repeat-order" title="Repeat order"></a>
+            </div>
         </div>
     </div>
-    <!-- </div>
-    </div> -->
 </div>

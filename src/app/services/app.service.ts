@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 
 import { Observable } from 'rxjs'
 import 'rxjs/add/operator/toPromise';
-import { MealOptions, Order, UserOrders, UserLogin, loginData, loginResponse } from '../model/app.modelClasses';
+import { MealOptions, Order, UserOrders, registrationData, loginData, loginResponse, registrationResponse } from '../model/app.modelClasses';
 
 @Injectable()
 export class DataService {
@@ -60,12 +60,15 @@ export class DataService {
 			.catch(this.handleError);
 	}
 
-	registerUser(userdata: UserLogin): Promise<string> {
+	registerUser(userdata: registrationData): Promise<registrationResponse> {
 		const url = `${this.baseUrl}/registerUser`;
 		return this.http.post(url, userdata, { headers: this._headers }).toPromise()
-			.then(res => {
-				if (res != null) {
-					return res.json();
+			.then(x => {
+				if (x != null) {
+					let res = x.json() as registrationResponse;
+					if (res.isRegistered)
+						this.createLoginSession(res.userId, false);
+					return res;
 				}
 			}).catch(
 			this.handleError
@@ -85,6 +88,18 @@ export class DataService {
 				if (res != null) {
 					// console.log(res);
 					return res.json() as Order;
+				}
+			}
+			).catch(this.handleError);
+	}
+
+	cancelOrder(orderid: string): Promise<boolean> {
+		const url = `${this.baseUrl}/cancelOrder`;
+		return this.http.post(url, { id: orderid }, { headers: this._headers }).toPromise()
+			.then(res => {
+				if (res != null) {
+					// console.log(res);
+					return res.json() as boolean;
 				}
 			}
 			).catch(this.handleError);

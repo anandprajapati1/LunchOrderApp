@@ -1,41 +1,83 @@
-.page-headeing{
+.page-headeing {
     color: white;
 }
-.filter{
+
+.filter {
     padding: 10px 0;
-	border: 1px solid white;
-	border-width: 1px 0;
-	color: white;
+    border: 1px solid white;
+    border-width: 1px 0;
+    color: white;
 }
-.order-item{
+
+.order-item {
     margin-top: 2px;
     margin-bottom: 2px;
     padding: 15px 0;
     background: rgba(255, 255, 255, .75);
-    cursor: pointer;
+    /* cursor: pointer; */
+    overflow: hidden;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     transition: all .3s ease;
 }
-.order-item:hover{
+
+.order-item:hover {
     background: white;
 }
-.order-item .order-item:nth-child(odd){
-}
-.order-item .order-detail{
+
+.order-item .order-item:nth-child(odd) {}
+
+.order-item .order-detail {
     display: inline-block;
     width: calc(100% - 110px);
     padding: 0 10px;
 }
-.order-item .order-status .badge{
+
+.order-item .order-status .badge {
     border-radius: 0;
     font-weight: normal;
     text-transform: uppercase;
 }
-.order-item .order-date{
+
+.order-item .order-date {
     font-size: .8em;
 }
-.order-item .order-id>span,.order-item .price-total{
+
+.order-item .order-id>span,
+.order-item .price-total {
     font-weight: 500;
     font-size: 0.9em;
+}
+
+.action-button {
+    position: absolute;
+    top: 0;
+    right: -25px;
+    width: 25px;
+    height: 100%;
+    text-align: center;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.order-item:hover .action-button,
+.order-item:focus .action-button {
+    right: 10px;
+}
+
+.action-button>a {
+    text-decoration: none;
+    padding: 0;
+    cursor: pointer;
+    color: red;
+}
+
+.action-button>a.repeat-order {
+    color: limegreen;
+}
+
+.action-button>a.disabled {
+    color: gray;
+    cursor: not-allowed;
 }
