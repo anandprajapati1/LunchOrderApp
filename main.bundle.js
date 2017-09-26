@@ -831,7 +831,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var DataService = /** @class */ (function () {
     function DataService(http) {
         this.http = http;
-        this.baseUrl = 'http://7d6162a7.ngrok.io'; // URL to web api
+        this.baseUrl = 'https://7d6162a7.ngrok.io'; // URL to web api
         // private baseUrl = 'http://localhost:3000';  // URL to web api
         this._headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'localhost:*' });
         this.isUserLoggedInKey = "_iuli";
