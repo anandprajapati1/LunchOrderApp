@@ -90,6 +90,18 @@ export class DataService {
 			).catch(this.handleError);
 	}
 
+	cancelOrder(orderid: string): Promise<boolean> {
+		const url = `${this.baseUrl}/cancelOrder`;
+		return this.http.post(url, { id: orderid }, { headers: this._headers }).toPromise()
+			.then(res => {
+				if (res != null) {
+					// console.log(res);
+					return res.json() as boolean;
+				}
+			}
+			).catch(this.handleError);
+	}
+
 	getUserOrderList(userid: string): Promise<UserOrders[]> {
 		return this.http.get(`${this.baseUrl}/getUserOrders/${userid}`, { headers: this._headers }).toPromise()
 			.then(res => res.json() as UserOrders[])

@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default navigation-clean-search">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand navbar-link" href="/" title="LunchOrderApp">
+                <a class="navbar-brand navbar-link" [routerLink]="['/home']" title="LunchOrderApp">
                     <img src="../../assets/logo.png" alt="logo">
                 </a>
                 <ul class="navbar-menu" *ngIf="_isLoggedIn">
@@ -19,6 +19,7 @@
                 <span class="float-right">
                     <a class="btn btn-default action-button login" [routerLink]="['/login']" [hidden]="_isLoggedIn">Log In</a>
                     <a class="btn btn-default action-button" role="button" [hidden]="_isLoggedIn">Sign Up</a>
+                    <a class="btn btn-default action-button" [routerLink]="['/profile']" [hidden]="!_isLoggedIn">My Profile</a>
                     <a class="btn btn-default action-button" role="button" (click)="_logoutClick()" [hidden]="!_isLoggedIn">Log Out</a>
                 </span>
             </div>
