@@ -8,7 +8,7 @@ import { registrationData, loginResponse, loginData } from "../model/app.modelCl
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
   _data: registrationData = new registrationData();

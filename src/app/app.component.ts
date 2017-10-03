@@ -10,13 +10,7 @@ import { SharedService } from '../app/services/shared-service.service';
   <div class="wrapper">
     <router-outlet></router-outlet>
   </div>`,
-  styles: [`
-  .wrapper{
-    max-width: 1100px;
-    margin: auto;
-    padding-top: 30px;
-  }
-  `]
+  styleUrls:['./app.component.scss']
 })
 export class AppComponent {
   loginStatus: boolean = false;

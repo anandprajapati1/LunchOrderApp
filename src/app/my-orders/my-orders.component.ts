@@ -7,7 +7,7 @@ import { DataService } from "../services/app.service";
 @Component({
   selector: 'app-my-orders',
   templateUrl: './my-orders.component.html',
-  styleUrls: ['./my-orders.component.css']
+  styleUrls: ['./my-orders.component.scss']
 })
 export class MyOrdersComponent implements OnInit {
   orderList: UserOrders[];

@@ -1,0 +1,27 @@
+<div class="profile-component container">
+	<div class="row">
+		<div class="col-md-3 col-lg-2">
+			<ul class="tab-header">
+				<li *ngFor="let t of tabState" class="tab-item" [(class.active)]="t.isActive">
+					<a (click)="selectTab(t)">{{t.linkText}}</a>
+				</li>
+            </ul>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+		</div>
+		<div class="col-md-9 col-lg-10 tab-wrapper">
+			<div class="tab-body" [hidden]="!tabState[0].isActive">
+				<div class="row">
+					<div class="col-lg-6">
+						<app-change-password></app-change-password>
+					</div>
+				</div>
+			</div>
+			<div class="tab-body" [hidden]="!tabState[1].isActive">
+				<h3 class="alert alert-warning">Under development !</h3>
+			</div>
+		</div>
+	</div>
+</div>

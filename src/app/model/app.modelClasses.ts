@@ -29,6 +29,12 @@ export class registrationData extends User {
     Password: string = "";
 }
 
+export class changePasswordData {
+    userId: string;
+    currentPassword: string;
+    newPassword: string;
+}
+
 export class loginData {
     EmailId: string;
     Password: string;
@@ -42,6 +48,6 @@ export class loginResponse {
 
 export class registrationResponse {
     isAlreadyRegistered: boolean;
-    isRegistered:boolean;
+    isRegistered: boolean;
     userId?: string;
 }
