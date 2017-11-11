@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/anandprajapati1/LunchOrderApp.svg?branch=master)](https://travis-ci.org/anandprajapati1/LunchOrderApp)
+
 # LunchOrderApp
 This application is based on popular Angular 2. Here we'll be using angular 2 with Typescript.
 However in this example, We have implemented basic CRUD operations using REST services hosted on node server. 

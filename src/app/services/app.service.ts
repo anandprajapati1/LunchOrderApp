@@ -114,9 +114,9 @@ export class DataService {
             ).catch(this.handleError);
     }
 
-    getUserOrderList(userid: string): Promise<_MC.UserOrders[]> {
+    getUserOrderList(userid: string): Promise<_MC.Order[]> {
         return this.http.get(`${this.baseUrl}/getUserOrders/${userid}`, { headers: this._headers }).toPromise()
-            .then(res => res.json() as _MC.UserOrders[])
+            .then(res => res.json() as _MC.Order[])
             .catch(this.handleError);
     }
 

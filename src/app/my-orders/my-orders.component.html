@@ -1,48 +1,54 @@
 <h3 class="page-headeing">My Orders</h3>
 <br>
 <div class="container">
-    <div class="row filter">
-        <div class="col-sm-4">Product Description</div>
-        <div class="col-sm-2">Status</div>
-        <div class="col-sm-2">Date</div>
-        <div class="col-sm-3">Order No.</div>
-        <div class="col-sm-1">Price</div>
-    </div>
-    <div class="row order-item" *ngFor="let order of orderList">
-        <div class="col-sm-4">
-            <img src="./assets/order-default.png" width="50px" height="50px" alt="sample image">
-            <div class="order-detail">
-                {{order.OrderedMeal[0].OptionDetail}}
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="order-status">
-                <span class="badge badge-success"></span>
-                <div *ngIf="order.IsActive" [class]="'badge ' + (order.IsAccepted?'badge-success':'badge-warning')">{{order.IsAccepted?"Accepted":"Not Accepted"}}</div>
-                <div *ngIf="order.IsActive" [class]="'badge ' + (order.IsPaid?'badge-success':'badge-warning')">{{order.IsPaid?"Paid":"Not Paid"}}</div>
-                <div *ngIf="!order.IsActive" class="badge badge-danger">Cancelled</div>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="order-date">{{order.CreatedOn|date: 'dd-MM-yyyy hh:mm a'}}</div>
-        </div>
-        <div class="col-sm-3">
-            <div class="order-id">
-                <span class="bg-info">
+	<div class="row filter">
+		<div class="col-sm-4">Product Description</div>
+		<div class="col-sm-2">Status</div>
+		<div class="col-sm-2">Date</div>
+		<div class="col-sm-3">Order No.</div>
+		<div class="col-sm-1">Price</div>
+	</div>
+	<div class="row order-item" *ngFor="let order of orderList">
+		<div class="col-sm-4">
+			<img src="./assets/order-default.png" class="order-thumbnail" alt="sample image">
+			<div class="order-detail">
+				<div *ngFor="let o of order.OrderItems" class="clearfix">
+					<span class="order-detail-text" [title]="o.OptionDetail">{{o.OptionDetail}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="order-status">
+				<span class="badge badge-success"></span>
+				<div *ngIf="order.IsActive" [class]="'badge ' + (order.IsAccepted?'badge-success':'badge-warning')">{{order.IsAccepted?"Accepted":"Not Accepted"}}</div>
+				<div *ngIf="order.IsActive" [class]="'badge ' + (order.IsPaid?'badge-success':'badge-warning')">{{order.IsPaid?"Paid":"Not Paid"}}</div>
+				<div *ngIf="!order.IsActive" class="badge badge-danger">Cancelled</div>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="order-date">{{order.CreatedOn|date: 'dd-MM-yyyy hh:mm a'}}</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="order-id">
+				<span class="bg-info">
 					{{order._id}}
 				</span>
-                <div *ngIf="order.Remarks" class="small"><b>Your remarks:</b> {{order.Remarks}}</div>
-            </div>
-        </div>
-        <div class="col-sm-1">
-            <div class="small">{{order.Count +' * '+order.OrderedMeal[0].Price}}</div>
-            <div class="price-total">
-                Rs {{order.Count*order.OrderedMeal[0].Price}}
-            </div>
-            <div class="action-button">
-                <a (click)="cancelOrder(order)" [hidden]="!order.IsActive" [class]="((order.IsAccepted||order.IsPaid)?' disabled':'')+' fa fa-times'" title="Cancel order"></a>
-                <a (click)="repeatOrder(order)" class="fa fa-repeat repeat-order" title="Repeat order"></a>
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+		<div class="col-sm-1">
+			<div class="small">
+				<div *ngFor="let o of order.OrderItems">
+					<span class="order-detail-text">{{o.Price}} x {{o.Count}}</span>
+				</div>
+			</div>
+			<div class="price-total">
+				Rs {{getSum(order.OrderItems)}}
+			</div>
+			<div class="action-button">
+				<a (click)="cancelOrder(order)" [hidden]="!order.IsActive" [class]="((order.IsAccepted||order.IsPaid)?' disabled':'')+' fa fa-times'"
+				title="Cancel order"></a>
+				<a (click)="repeatOrder(order)" class="fa fa-repeat repeat-order" title="Repeat order"></a>
+			</div>
+		</div>
+	</div>
 </div>
