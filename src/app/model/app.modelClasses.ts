@@ -7,18 +7,22 @@ export class MealOptions {
 }
 export class Order {
     _id?: string;
-    OptionId: string = "";
-    Count: number = 0;
-    Remarks: string = "";
+    // OptionId: string = "";
+    // Count: number = 0;
+    // Remarks: string = "";
     IsAccepted: boolean = false;
     IsPaid: boolean = false;
     IsActive: boolean = true;
     CreatedOn: Date = new Date();
     CreatedBy: string = "";
+    OrderItems: OrderItem[];
 }
 
-export class UserOrders extends Order {
-    OrderedMeal: MealOptions[];
+export class OrderItem {
+    OptionId: string = "";
+    OptionDetail: string = "";
+    Price: number = 0;
+    Count: number = 0;
 }
 export class User {
     _id?: string;

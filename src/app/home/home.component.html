@@ -1,5 +1,66 @@
-<div class="container">
-    <div class="alert alert-info">
+<div class="home-conmponent main-container">
+	<div class="section-title">
+		What do you want for lunch today?
+	</div>
+	<div class="row">
+		<div class="col-sm-8">
+			<div class="menu-container">
+				<ul class="menu">
+					<li class="menu-item col-sm-6" *ngFor="let op of mealOptions">
+                        <div class="menu-item-inner">
+                            <img src="../../assets/order-default.png" alt="thumbnail">
+                            <div class="menu-item-overlay">
+                                <div class="menu-item-detail">
+                                    <span>
+                                        {{op.OptionDetail}}
+                                    </span>
+                                    <span class="price">
+                                        Rs. {{op.Price}}
+                                    </span>
+                                    <a href="javascript:void(0)" class="add-to-cart" (click)="addItemToCart(op)">ADD TO CART</a>
+                                </div>
+                            </div>
+                        </div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<form class="cart-container" (submit)="submitForm()" #myform="ngForm" novalidate [style.top]="_cartTopOffset+'px'">
+				<h4 class="cart-title">Your Cart</h4>
+				<div class="cart-head clearfix">
+					<div class="pull-left">Item</div>
+					<div class="pull-right">Price</div>
+				</div>
+				<ul class="cart-body">
+                    <li class="cart-item" *ngIf="_cart.length==0">No item in the cart</li>
+					<li class="cart-item clearfix" *ngFor="let co of _cart">
+						<span class="cart-item-detail">
+                            {{co.OptionDetail}}
+                            <i class="fa fa-minus" (click)="decreaseItemCount(co)"></i>
+                            <i class="fa fa-plus" (click)="increaseItemCount(co)"></i>
+						</span>
+						<span class="cart-item-price">
+							{{co.Price}} x {{co.Count}}
+						</span>
+					</li>
+				</ul>
+				<div class="cart-total clearfix">
+					<div class="pull-left">Total</div>
+					<div class="pull-right">{{_cartTotal}}</div>
+				</div>
+                <br>
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-shopping-cart"></i>
+                        Place Order
+                    </button>
+                </div>
+            </form>
+            <!-- {{_cartTopOffset}} -->
+		</div>
+	</div>
+	<!-- <div class="alert alert-info">
         <h3>
             Lunch Time!
         </h3>
@@ -7,76 +68,58 @@
         <p class="mb-0">
             Tell us what you wanna have in lunch ...
         </p>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <form (submit)="submitForm()" #myform="ngForm" novalidate>
-                <!-- <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="emailid">Email address</label>
-                            <input type="text" class="form-control" required [(ngModel)]="_emailid" placeholder="someone@example.com" name="emailid"
-                                #e="ngModel" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
-                            <div *ngIf="e.errors && (e.dirty || e.touched)" class="alert alert-danger">
-                                <div [hidden]="!e.errors.required">
-                                    Email id is required
-                                </div>
-                                <div [hidden]="!e.errors.pattern">
-                                    Please provide a valid email
-                                </div>
-                            </div>
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                    </div>
-                </div> -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="selectedMealOption">Options</label>
-                            <select class="custom-select form-control" [(ngModel)]="selectedOption" name="selectedMealOption" #option="ngModel" required>
-                              <option *ngFor="let o of mealOptions" [ngValue]="o" [attr.data-price]="o.Price">{{o.OptionDetail}}</option>
-                          </select>
-                            <div [hidden]="!(selectedOption.Price<=0 && (option.dirty || option.touched))" class="alert alert-danger">
-                                Please select quantity
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="selected-quantity">How many?</label>
-                            <select class="custom-select form-control" [(ngModel)]="selectedQuantity" name="selected-quantity" #qty="ngModel" required>
-                              <option value="0">- select -</option>
-                              <option *ngFor="let q of _quantity" [ngValue]="q">{{q}}</option>
-                          </select>
-                            <div [hidden]="!(selectedQuantity<=0 && (qty.dirty || qty.touched))" class="alert alert-danger">
-                                Please select quantity
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="Comments">Any instructions? </label>
-                            <textarea class="form-control" name="Comments" cols="30" rows="3" [(ngModel)]="_comments"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="alert alert-success text-right">
-                    <div class="row">
-                        <div class="col-md-6">
-                            Total:
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" disabled="disabled" name="totalCost" [(ngModel)]="(selectedOption?selectedOption.Price:0)*selectedQuantity">
-                        </div>
-                    </div>
-                </div>
-                <div class="btn-container">
-                    <button type="submit" class="btn btn-primary" [disabled]="!(myform.form.valid && selectedQuantity>0 && selectedOption.Price>0)">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    </div> -->
+	<!-- <div class="card">
+		<div class="card-body">
+			<form (submit)="submitForm()" #myform="ngForm" novalidate>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="selectedMealOption">Options</label>
+							<select class="custom-select form-control" [(ngModel)]="selectedOption" name="selectedMealOption" #option="ngModel" required>
+								<option *ngFor="let o of mealOptions" [ngValue]="o" [attr.data-price]="o.Price">{{o.OptionDetail}}</option>
+							</select>
+							<div [hidden]="!(selectedOption.Price<=0 && (option.dirty || option.touched))" class="alert alert-danger">
+								Please select quantity
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="selected-quantity">How many?</label>
+							<select class="custom-select form-control" [(ngModel)]="selectedQuantity" name="selected-quantity" #qty="ngModel" required>
+								<option value="0">- select -</option>
+								<option *ngFor="let q of _quantity" [ngValue]="q">{{q}}</option>
+							</select>
+							<div [hidden]="!(selectedQuantity<=0 && (qty.dirty || qty.touched))" class="alert alert-danger">
+								Please select quantity
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<label for="Comments">Any instructions? </label>
+							<textarea class="form-control" name="Comments" cols="30" rows="3" [(ngModel)]="_comments"></textarea>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="alert alert-success text-right">
+					<div class="row">
+						<div class="col-md-6">
+							Total:
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" disabled="disabled" name="totalCost" [(ngModel)]="(selectedOption?selectedOption.Price:0)*selectedQuantity">
+						</div>
+					</div>
+				</div>
+				<div class="btn-container">
+					<button type="submit" class="btn btn-primary" [disabled]="!(myform.form.valid && selectedQuantity>0 && selectedOption.Price>0)">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div> -->
 </div>
