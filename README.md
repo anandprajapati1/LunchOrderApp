@@ -26,7 +26,7 @@ Run following command in command prompt/terminal(in root folder)
 ```
 npm start
 ```
-This will start application and run in browser on default port 3001. And thats all!
+This will start application and run in browser on default port 4200. And thats all!
 
 
 ## Further help
