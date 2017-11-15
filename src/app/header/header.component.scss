@@ -1,0 +1,242 @@
+.header-blue {
+	font-family: 'Source Sans Pro', sans-serif;
+	@media (max-width: 767px) {
+		padding-bottom: 80px;
+	}
+	.navbar {
+		position: fixed;
+		width: 100%;
+		top: 0;
+		background: rgb(53, 99, 150);
+		padding-top: 12px;
+		padding-bottom: 10px;
+		color: #fff;
+		border-radius: 0;
+		box-shadow: none;
+		border: none;
+		box-shadow: 0 0 7px -1px #000;
+		z-index: 99;
+		.navbar-brand {
+			font-weight: bold;
+			color: inherit;
+			width: 40px;
+			height: 20px;
+			padding: 0;
+			img {
+				height: 100%;
+				margin-right: 10px;
+				width: 130px;
+				height: auto;
+				float: left;
+				margin-top: -20px;
+				-webkit-transition: all ease .3s;
+				-moz-transition: all ease .3s;
+				transition: all ease .3s;
+			}
+			&:hover {
+				color: #f0f0f0;
+			}
+		}
+		.navbar-collapse {
+			p {
+				margin-top: 10px;
+				margin-bottom: 0;
+				.login {
+					color: #d9d9d9;
+					margin-right: 10px;
+					text-decoration: none;
+					&:hover {
+						color: #fff;
+					}
+				}
+			}
+		}
+		.navbar-toggle {
+			border-color: rgba(255, 255, 255, 0.3);
+			&:hover,
+			&:focus {
+				background: none;
+			}
+			.icon-bar {
+				background-color: #eee;
+			}
+		}
+		.navbar-nav {
+			&>.active>a,
+			&>.open>a {
+				background: none;
+				box-shadow: none;
+			}
+			&>li {
+				&>a {
+					padding-left: 18px;
+					padding-right: 18px;
+				}
+				&>.dropdown-menu {
+					margin-top: -5px;
+					box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+					background-color: #fff;
+					border-radius: 2px;
+				}
+			}
+			@media (max-width:767px) {
+				.open .dropdown-menu {
+					box-shadow: none;
+					background: none;
+					color: #fff;
+					&>li>a {
+						color: #fdfeff;
+						padding-top: 12px;
+						padding-bottom: 12px;
+						line-height: 1;
+					}
+				}
+			}
+			@media (max-width:767px) {}
+		}
+		.dropdown-menu>li>a {
+			&,
+			&:focus {
+				line-height: 2;
+				font-size: 14px;
+				color: #37434d;
+			}
+			&:focus,
+			&:hover {
+				background: #ebeff1;
+			}
+		}
+		.navbar-form {
+			label {
+				color: #ccc;
+			}
+			.search-field {
+				background: none;
+				border: none;
+				border-bottom: 1px solid transparent;
+				border-radius: 0;
+				color: #ccc;
+				box-shadow: none;
+				color: inherit;
+				transition: border-bottom-color 0.3s;
+				@media (max-width: 767px) {
+					display: inline-block;
+					width: 80%;
+					&:focus {
+						border-bottom: 1px solid #ccc;
+					}
+				}
+			}
+		}
+		.navbar-collapse,
+		.navbar-form {
+			border-color: rgba(255, 255, 255, 0.3);
+		}
+		&.navbar-default .navbar-nav {
+			&>.active>a,
+			&>.active>a:focus,
+			&>.active>a:hover {
+				color: rgba(255, 255, 255, 0.3);
+				box-shadow: none;
+				background: none;
+				pointer-events: none;
+			}
+			&>li>a {
+				color: #d9d9d9;
+				&:focus,
+				&:hover {
+					color: #fcfeff !important;
+					background-color: transparent;
+				}
+			}
+		}
+		@media (max-width: 767px) {
+			padding-top: 0;
+			padding-bottom: 0;
+			.navbar-header {
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			.navbar-right {
+				margin-bottom: 20px;
+			}
+		}
+	}
+	.action-button {
+		&,
+		&:active {
+			border: 2px solid rgba(255, 255, 255, 0.7);
+			border-radius: 20px;
+			color: #ebeff1;
+			box-shadow: none;
+			text-shadow: none;
+			padding: 6px 15px;
+			background: transparent;
+			transition: background-color 0.25s;
+			outline: none;
+			margin-left: 10px;
+		}
+		&:hover {
+			color: #44649e;
+			background: white;
+		}
+		&.btn-lg {
+			padding: 7px 18px;
+		}
+	}
+	.header-blue .hero {
+		margin-top: 60px;
+		@media (max-width: 767px) {
+			margin-top: 20px;
+			text-align: center;
+		}
+		h1 {
+			color: #fff;
+			font-size: 40px;
+			margin-top: 190px;
+			margin-bottom: 24px;
+			font-weight: 300;
+			@media (max-width: 991px) {
+				margin-top: 0;
+				margin-bottom: 15px;
+				line-height: 1.4;
+			}
+		}
+		p {
+			color: rgba(255, 255, 255, 0.8);
+			font-size: 20px;
+			margin-bottom: 30px;
+			font-weight: 300;
+		}
+	}
+	&.scrolled .navbar .navbar-brand img {
+		width: 50px;
+		margin-top: -10px;
+	}
+	&.scrolled .navbar-menu {
+		margin-left: 0;
+	}
+}
+
+.navbar-menu {
+	display: inline-block;
+	margin: 0 0 0 70px;
+	padding: 0;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	transition: all .3s ease;
+	&-item {
+		display: inline-block;
+		&>a {
+			padding: 0 20px;
+			color: white;
+			&:focus {
+				text-decoration: none;
+			}
+			&:hover {
+				color: white;
+				text-decoration: underline;
+			}
+		}
+	}
+}
