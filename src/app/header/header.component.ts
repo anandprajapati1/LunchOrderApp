@@ -22,6 +22,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this._isLoggedIn = this._dataservice.isLoggedIn()
+    // if vendor login
+    document.body.className+=" vendor";
   }
 
   @HostListener("window:scroll", [])

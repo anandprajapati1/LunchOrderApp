@@ -48,10 +48,21 @@ export class loginResponse {
     isUsernameValid: boolean;
     isPasswordValid: boolean;
     userId: string;
+    userType: usertTypeEnum = usertTypeEnum.DEFAULT;
 }
 
 export class registrationResponse {
     isAlreadyRegistered: boolean;
     isRegistered: boolean;
     userId?: string;
+    readonly userType: usertTypeEnum = usertTypeEnum.DEFAULT;
+}
+
+export enum usertTypeEnum {
+    VENDOR = "VENDOR", DEFAULT = "DEFAULT"
+}
+
+export class userLoginStatus {
+    userId: string = "";
+    userType: usertTypeEnum = usertTypeEnum.DEFAULT;
 }

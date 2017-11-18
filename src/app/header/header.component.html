@@ -7,7 +7,7 @@
                 </a>
                 <ul class="navbar-menu" *ngIf="_isLoggedIn">
                     <li class="navbar-menu-item">
-                        <a [routerLink]="['/orders']">My Orders</a>
+                        <a [routerLink]="['user','orders']">My Orders</a>
                     </li>
                 </ul>
                 <!-- <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1">
@@ -19,7 +19,7 @@
                 <span class="float-right">
                     <a class="btn btn-default action-button login" [routerLink]="['/login']" [hidden]="_isLoggedIn">Log In</a>
                     <a class="btn btn-default action-button" role="button" [routerLink]="['/register']" [hidden]="_isLoggedIn">Sign Up</a>
-                    <a class="btn btn-default action-button" [routerLink]="['/profile']" [hidden]="!_isLoggedIn">My Profile</a>
+                    <a class="btn btn-default action-button" [routerLink]="['user','profile']" [hidden]="!_isLoggedIn">My Profile</a>
                     <a class="btn btn-default action-button" role="button" (click)="_logoutClick()" [hidden]="!_isLoggedIn">Log Out</a>
                 </span>
             </div>

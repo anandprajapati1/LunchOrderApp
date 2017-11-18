@@ -14,9 +14,9 @@ export class DataService {
     private lastLoginDateKey: string = "lastLogin";
 
     constructor(private http: Http) { }
-
-    getCurrentUserId(): string {
-        return localStorage.getItem(this.isUserLoggedInKey) || sessionStorage.getItem(this.isUserLoggedInKey)
+    //#region AUTHENTICATION
+    getCurrentUser(): _MC.userLoginStatus {
+        return JSON.parse(localStorage.getItem(this.isUserLoggedInKey) || sessionStorage.getItem(this.isUserLoggedInKey)) as _MC.userLoginStatus;
     }
     isLoggedIn(): boolean {
         let today: Date = new Date();
@@ -40,14 +40,17 @@ export class DataService {
         localStorage.removeItem(this.lastLoginDateKey)
     }
 
-    createLoginSession(_userid: string, _remember: boolean) {
+    private createLoginSession(_userid: string, _usertype: _MC.usertTypeEnum, _remember: boolean) {
+        let loginStatus: _MC.userLoginStatus = new _MC.userLoginStatus();
+        loginStatus.userId = _userid
+        loginStatus.userType = _usertype;
         // iuli => is user logged in
         if (_remember) {
-            localStorage.setItem(this.isUserLoggedInKey, _userid)
+            localStorage.setItem(this.isUserLoggedInKey, JSON.stringify(loginStatus))
             localStorage.setItem(this.lastLoginDateKey, (new Date()).toUTCString())
         }
         else {
-            sessionStorage.setItem(this.isUserLoggedInKey, _userid)
+            sessionStorage.setItem(this.isUserLoggedInKey, JSON.stringify(loginStatus))
         }
     }
 
@@ -55,8 +58,10 @@ export class DataService {
         return this.http.post(`${this.baseUrl}/loginUser`, _logindata, { headers: this._headers }).toPromise()
             .then(x => {
                 let res = x.json() as _MC.loginResponse;
+                if (!res.userType)
+                    res.userType = _MC.usertTypeEnum.DEFAULT
                 if (res.isUsernameValid && res.isPasswordValid)
-                    this.createLoginSession(res.userId, _logindata.rememberMe);
+                    this.createLoginSession(res.userId, res.userType, _logindata.rememberMe);
                 return res;
             })
             .catch(this.handleError);
@@ -69,7 +74,7 @@ export class DataService {
                 if (x != null) {
                     let res = x.json() as _MC.registrationResponse;
                     if (res.isRegistered)
-                        this.createLoginSession(res.userId, false);
+                        this.createLoginSession(res.userId, res.userType, false);
                     return res;
                 }
             }).catch(
@@ -83,6 +88,7 @@ export class DataService {
             .then(x => x.json())
             .catch(this.handleError)
     }
+    //#endregion
 
     getMealOptions(): Promise<_MC.MealOptions[]> {
         return this.http.get(`${this.baseUrl}/getMealOptions`, { headers: this._headers }).toPromise()
