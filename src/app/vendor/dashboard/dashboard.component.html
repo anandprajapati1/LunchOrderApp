@@ -2,27 +2,38 @@
 	<a href="javascript:void(0)" class="tile new" title="New order requests">
 		<span class="thumb">
 			<i class="fa fa-cutlery" aria-hidden="true"></i>
-        </span>
+		</span>
 		<div class="tile-detail">
-            New Order
-        </div>
-    </a>
+			Order
+			<div>{{_neworders}}</div>
+		</div>
+	</a>
 	<a href="javascript:void(0)" class="tile accepted" title="Pending for delivery">
 		<span class="thumb">
 			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-        </span>
-		<div class="tile-detail">Pending</div>
-    </a>
+		</span>
+		<div class="tile-detail">
+			Pending
+			<div>{{_pendingorders}}</div>
+		</div>
+	</a>
 	<a href="javascript:void(0)" class="tile cancelled" title="Cancelled by user/Rejected by you">
 		<span class="thumb">
 			<i class="fa fa-ban" aria-hidden="true"></i>
-        </span>
-		<div class="tile-detail">Cancelled</div>
-    </a>
+		</span>
+		<div class="tile-detail">
+			Cancelled
+			<div>{{_cacelledorders + _rejectedorders}}
+			</div>
+		</div>
+	</a>
 	<a href="javascript:void(0)" class="tile completed" title="Completed orders">
 		<span class="thumb">
 			<i class="fa fa-check-square-o" aria-hidden="true"></i>
-        </span>
-		<div class="tile-detail">Completed</div>
-    </a>
+		</span>
+		<div class="tile-detail">
+			Completed
+			<div>{{_completedorders}}</div>
+		</div>
+	</a>
 </div>

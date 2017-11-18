@@ -130,6 +130,12 @@ export class DataService {
             .catch(this.handleError);
     }
 
+    getAllOrders(): Promise<_MC.Order4Dashboard[]> {
+        return this.http.get(`${this.baseUrl}/getAllOrders`, { headers: this._headers }).toPromise()
+            .then(res => res.json() as _MC.Order4Dashboard[])
+            .catch(this.handleError);
+    }
+
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
