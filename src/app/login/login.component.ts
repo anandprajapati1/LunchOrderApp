@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
                 this.serverError = "Password invalid"
             }
             else if (x.userId) {
-                this.sharedservice.emitLoginStatus(true);
+                let _status: userLoginStatus = { userId: x.userId, userType: x.userType }
+                this.sharedservice.emitLoginStatus(_status);
                 if (x.userType == usertTypeEnum.VENDOR)
                     this._router.navigate(['vendor', 'dashboard'])
                 else

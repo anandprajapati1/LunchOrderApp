@@ -18,6 +18,10 @@ export class DataService {
     getCurrentUser(): _MC.userLoginStatus {
         return JSON.parse(localStorage.getItem(this.isUserLoggedInKey) || sessionStorage.getItem(this.isUserLoggedInKey)) as _MC.userLoginStatus;
     }
+    isVendor(): boolean {
+        let currentUser: _MC.userLoginStatus = this.getCurrentUser();
+        return currentUser != null && currentUser.userType == _MC.usertTypeEnum.VENDOR
+    }
     isLoggedIn(): boolean {
         let today: Date = new Date();
         today.setDate(today.getDate() - 30);

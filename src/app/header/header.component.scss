@@ -1,4 +1,4 @@
-.header-blue {
+.header {
 	font-family: 'Source Sans Pro', sans-serif;
 	@media (max-width: 767px) {
 		padding-bottom: 80px;
@@ -184,31 +184,6 @@
 			padding: 7px 18px;
 		}
 	}
-	.header-blue .hero {
-		margin-top: 60px;
-		@media (max-width: 767px) {
-			margin-top: 20px;
-			text-align: center;
-		}
-		h1 {
-			color: #fff;
-			font-size: 40px;
-			margin-top: 190px;
-			margin-bottom: 24px;
-			font-weight: 300;
-			@media (max-width: 991px) {
-				margin-top: 0;
-				margin-bottom: 15px;
-				line-height: 1.4;
-			}
-		}
-		p {
-			color: rgba(255, 255, 255, 0.8);
-			font-size: 20px;
-			margin-bottom: 30px;
-			font-weight: 300;
-		}
-	}
 	&.scrolled .navbar .navbar-brand img {
 		width: 50px;
 		margin-top: -10px;
@@ -216,6 +191,16 @@
 	&.scrolled .navbar-menu {
 		margin-left: 0;
 	}
+}
+
+.header-purple {
+	.navbar {
+		background: #a137d9;
+    }
+    .action-button{
+        border-color: white;
+        color: white;
+    }
 }
 
 .navbar-menu {

@@ -1,12 +1,12 @@
-<div [class]="'header-blue '+(_isScrolled?'scrolled':'')">
+<div [class]="'header '+(_isVendor?'header-purple':'header-blue')" [class.header-purple]="_isVendor" [class.scrolled]="_isScrolled">
     <nav class="navbar navbar-default navigation-clean-search">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand navbar-link" [routerLink]="['/home']" title="LunchOrderApp">
                     <img src="./assets/logo.png" alt="logo">
                 </a>
-                <ul class="navbar-menu" *ngIf="_isLoggedIn">
-                    <li class="navbar-menu-item">
+                <ul class="navbar-menu" *ngIf="_currectUser">
+                    <li class="navbar-menu-item" [hidden]="_isVendor">
                         <a [routerLink]="['user','orders']">My Orders</a>
                     </li>
                 </ul>
@@ -17,10 +17,10 @@
 					<span class="icon-bar"></span>
 				</button> -->
                 <span class="float-right">
-                    <a class="btn btn-default action-button login" [routerLink]="['/login']" [hidden]="_isLoggedIn">Log In</a>
-                    <a class="btn btn-default action-button" role="button" [routerLink]="['/register']" [hidden]="_isLoggedIn">Sign Up</a>
-                    <a class="btn btn-default action-button" [routerLink]="['user','profile']" [hidden]="!_isLoggedIn">My Profile</a>
-                    <a class="btn btn-default action-button" role="button" (click)="_logoutClick()" [hidden]="!_isLoggedIn">Log Out</a>
+                    <a class="btn btn-default action-button login" [routerLink]="['/login']" [hidden]="_currectUser">Log In</a>
+                    <a class="btn btn-default action-button" role="button" [routerLink]="['/register']" [hidden]="_currectUser">Sign Up</a>
+                    <a class="btn btn-default action-button" [routerLink]="['user','profile']" [hidden]="!_currectUser || _isVendor">My Profile</a>
+                    <a class="btn btn-default action-button" role="button" (click)="_logoutClick()" [hidden]="!_currectUser">Log Out</a>
                 </span>
             </div>
             <div class="collapse navbar-collapse" id="navcol-1">
@@ -44,11 +44,4 @@
             </div>
         </div>
     </nav>
-    <!-- <div class="container hero">
-        <div class="row">
-            <div class="col-lg-5 col-lg-offset-1 col-md-6 col-md-offset-0">
-                <button class="btn btn-default btn-lg action-button" type="button">Learn More</button>
-            </div>
-        </div>
-    </div> -->
 </div>

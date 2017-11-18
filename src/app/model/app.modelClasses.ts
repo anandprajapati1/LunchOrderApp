@@ -66,3 +66,10 @@ export class userLoginStatus {
     userId: string = "";
     userType: usertTypeEnum = usertTypeEnum.DEFAULT;
 }
+
+export class Order4Dashboard{
+    newOrdersCount:number;
+    acceptedOrdersCount:number;
+    cancelledOrdersCount:number;
+    completedOrdersCount:number;
+}
