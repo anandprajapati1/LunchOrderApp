@@ -74,6 +74,11 @@ export class HomeComponent implements OnInit {
         this._cartTotal -= item.Price;
     }
     submitForm(): void {
+        if (this._cart.length == 0) {
+            alert("Cart is empty.")
+            return
+        }
+
         let orderDetail: Order = new Order();
         orderDetail.CreatedBy = this.dataService.getCurrentUser().userId;
         orderDetail.OrderItems = this._cart;
@@ -81,7 +86,7 @@ export class HomeComponent implements OnInit {
         this.dataService.placeOrder(orderDetail).then(x => {
             if (x._id !== "") {
                 //redirect ot Thank you page
-                this.router.navigate(['/thankyou', x._id]);
+                this.router.navigate(['user', 'thankyou', x._id]);
                 return false;
             }
         });
