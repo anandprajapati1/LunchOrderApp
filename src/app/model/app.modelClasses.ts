@@ -10,7 +10,7 @@ export class Order {
     // OptionId: string = "";
     // Count: number = 0;
     // Remarks: string = "";
-    IsAccepted?: boolean;
+    IsAccepted?: boolean = null;
     IsPaid: boolean = false;
     IsActive: boolean = true;
     CreatedOn: Date = new Date();
@@ -68,7 +68,7 @@ export class userLoginStatus {
 }
 
 export class Order4Dashboard {
-    IsAccepted: boolean = false;
-    IsPaid: boolean = false;
-    IsActive: boolean = true;
+    IsAccepted?: boolean;
+    IsPaid?: boolean;
+    IsActive?: boolean;
 }

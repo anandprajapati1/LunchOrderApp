@@ -1,5 +1,5 @@
 <div class="dashboard-wrapper clearfix">
-	<a href="javascript:void(0)" class="tile new" title="New order requests">
+	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'NEW'}" class="tile new" title="New order requests">
 		<span class="thumb">
 			<i class="fa fa-cutlery" aria-hidden="true"></i>
 		</span>
@@ -8,7 +8,7 @@
 			<div>{{_neworders}}</div>
 		</div>
 	</a>
-	<a href="javascript:void(0)" class="tile accepted" title="Pending for delivery">
+	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'PENDING'}" class="tile accepted" title="Pending for delivery">
 		<span class="thumb">
 			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
 		</span>
@@ -17,7 +17,7 @@
 			<div>{{_pendingorders}}</div>
 		</div>
 	</a>
-	<a href="javascript:void(0)" class="tile cancelled" title="Cancelled by user/Rejected by you">
+	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'CANCELLED'}" class="tile cancelled" title="Cancelled by user/Rejected by you">
 		<span class="thumb">
 			<i class="fa fa-ban" aria-hidden="true"></i>
 		</span>
@@ -27,7 +27,7 @@
 			</div>
 		</div>
 	</a>
-	<a href="javascript:void(0)" class="tile completed" title="Completed orders">
+	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'COMPLETED'}" class="tile completed" title="Completed orders">
 		<span class="thumb">
 			<i class="fa fa-check-square-o" aria-hidden="true"></i>
 		</span>

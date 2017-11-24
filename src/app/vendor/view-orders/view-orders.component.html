@@ -1,3 +1,55 @@
-<p>
-  view-orders works!
-</p>
+<div class="container">
+    <h3 class="page-heading">Orders status </h3>
+    <span class="list-info" [hidden]="!orderList.length">
+        {{orderList.length + " items found"}}
+    </span>
+	<br>
+	<div class="row filter">
+		<div class="col-sm-5">Ordered Items</div>
+		<div class="col-sm-3">Order detail</div>
+		<div class="col-sm-2">Price</div>
+		<div class="col-sm-2">Action</div>
+    </div>
+    <span class="list-info" [hidden]="orderList.length">
+        {{orderList.length + " items found"}}
+    </span>
+	<div class="row order-item" *ngFor="let order of orderList">
+		<div class="col-sm-5">
+			<img src="./assets/order-default.png" class="order-thumbnail" alt="sample image">
+			<div class="order-detail">
+				<div *ngFor="let o of order.OrderItems" class="clearfix">
+					<span class="order-detail-text" [title]="o.OptionDetail">
+                        <i class="badge badge-success">{{o.Count}}</i>
+                        {{o.OptionDetail}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="order-id">
+                <span>
+                    {{order._id}}
+                </span>
+			</div>
+			<!-- <div class="order-date">{{order.CreatedOn|date: 'dd-MM-yyyy hh:mm a'}}</div> -->
+		</div>
+		<div class="col-sm-2">
+			<div class="order-price">
+                Rs. {{getSum(order.OrderItems)}}
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="action-button">
+				<a (click)="acceptOrder(order)" [hidden]="!order.IsActive || order.IsAccepted!=null" class="btn btn-success" title="Accept order">
+                    <i class="fa fa-check"></i>Accept
+                </a>
+				<a (click)="rejectOrder(order)" [hidden]="!order.IsActive || order.IsAccepted!=null" class="btn btn-danger" title="Cancel order">
+                    <i class="fa fa-ban"></i>
+                    Reject
+                </a>
+                <span class="badge badge-danger action-button-msg" *ngIf="order.IsAccepted==false">You rejected this order</span>
+                <span class="badge badge-success action-button-msg" *ngIf="order.IsAccepted==true">You accepted this order</span>
+                <span class="badge badge-danger action-button-msg" *ngIf="!order.IsActive">User cancelled this order</span>
+			</div>
+		</div>
+	</div>
+</div>
