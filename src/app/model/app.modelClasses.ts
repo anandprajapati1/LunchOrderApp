@@ -10,7 +10,7 @@ export class Order {
     // OptionId: string = "";
     // Count: number = 0;
     // Remarks: string = "";
-    IsAccepted: boolean = false;
+    IsAccepted?: boolean = null;
     IsPaid: boolean = false;
     IsActive: boolean = true;
     CreatedOn: Date = new Date();
@@ -48,10 +48,27 @@ export class loginResponse {
     isUsernameValid: boolean;
     isPasswordValid: boolean;
     userId: string;
+    userType: usertTypeEnum = usertTypeEnum.DEFAULT;
 }
 
 export class registrationResponse {
     isAlreadyRegistered: boolean;
     isRegistered: boolean;
     userId?: string;
+    readonly userType: usertTypeEnum = usertTypeEnum.DEFAULT;
+}
+
+export enum usertTypeEnum {
+    VENDOR = "VENDOR", DEFAULT = "DEFAULT"
+}
+
+export class userLoginStatus {
+    userId: string = "";
+    userType: usertTypeEnum = usertTypeEnum.DEFAULT;
+}
+
+export class Order4Dashboard {
+    IsAccepted?: boolean;
+    IsPaid?: boolean;
+    IsActive?: boolean;
 }

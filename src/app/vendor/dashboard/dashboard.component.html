@@ -1,0 +1,48 @@
+<div class="dashboard-wrapper clearfix">
+	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'NEW'}" class="tile new" title="New order requests">
+		<span class="thumb">
+			<i class="fa fa-cutlery" aria-hidden="true"></i>
+		</span>
+		<div class="tile-detail">
+			Order
+			<div>{{_neworders}}</div>
+		</div>
+	</a>
+	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'PENDING'}" class="tile accepted" title="Pending for delivery">
+		<span class="thumb">
+			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+		</span>
+		<div class="tile-detail">
+			Pending
+			<div>{{_pendingorders}}</div>
+		</div>
+	</a>
+	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'CANCELLED'}" class="tile cancelled" title="Cancelled by user">
+		<span class="thumb">
+			<i class="fa fa-ban" aria-hidden="true"></i>
+		</span>
+		<div class="tile-detail">
+			Cancelled
+			<div>{{_cacelledorders}}
+			</div>
+		</div>
+	</a>
+	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'COMPLETED'}" class="tile completed" title="Completed orders">
+		<span class="thumb">
+			<i class="fa fa-check-square-o" aria-hidden="true"></i>
+		</span>
+		<div class="tile-detail">
+			Completed
+			<div>{{_completedorders}}</div>
+		</div>
+	</a>
+	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'REJECTED'}" class="tile rejected" title="Rejected by you">
+		<span class="thumb">
+			<i class="fa fa-check-square-o" aria-hidden="true"></i>
+		</span>
+		<div class="tile-detail">
+			Rejected
+			<div>{{_rejectedorders}}</div>
+		</div>
+	</a>
+</div>

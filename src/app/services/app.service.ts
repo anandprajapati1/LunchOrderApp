@@ -14,9 +14,13 @@ export class DataService {
     private lastLoginDateKey: string = "lastLogin";
 
     constructor(private http: Http) { }
-
-    getCurrentUserId(): string {
-        return localStorage.getItem(this.isUserLoggedInKey) || sessionStorage.getItem(this.isUserLoggedInKey)
+    //#region AUTHENTICATION
+    getCurrentUser(): _MC.userLoginStatus {
+        return JSON.parse(localStorage.getItem(this.isUserLoggedInKey) || sessionStorage.getItem(this.isUserLoggedInKey)) as _MC.userLoginStatus;
+    }
+    isVendor(): boolean {
+        let currentUser: _MC.userLoginStatus = this.getCurrentUser();
+        return currentUser != null && currentUser.userType == _MC.usertTypeEnum.VENDOR
     }
     isLoggedIn(): boolean {
         let today: Date = new Date();
@@ -40,14 +44,17 @@ export class DataService {
         localStorage.removeItem(this.lastLoginDateKey)
     }
 
-    createLoginSession(_userid: string, _remember: boolean) {
+    private createLoginSession(_userid: string, _usertype: _MC.usertTypeEnum, _remember: boolean) {
+        let loginStatus: _MC.userLoginStatus = new _MC.userLoginStatus();
+        loginStatus.userId = _userid
+        loginStatus.userType = _usertype;
         // iuli => is user logged in
         if (_remember) {
-            localStorage.setItem(this.isUserLoggedInKey, _userid)
+            localStorage.setItem(this.isUserLoggedInKey, JSON.stringify(loginStatus))
             localStorage.setItem(this.lastLoginDateKey, (new Date()).toUTCString())
         }
         else {
-            sessionStorage.setItem(this.isUserLoggedInKey, _userid)
+            sessionStorage.setItem(this.isUserLoggedInKey, JSON.stringify(loginStatus))
         }
     }
 
@@ -55,8 +62,10 @@ export class DataService {
         return this.http.post(`${this.baseUrl}/loginUser`, _logindata, { headers: this._headers }).toPromise()
             .then(x => {
                 let res = x.json() as _MC.loginResponse;
+                if (!res.userType)
+                    res.userType = _MC.usertTypeEnum.DEFAULT
                 if (res.isUsernameValid && res.isPasswordValid)
-                    this.createLoginSession(res.userId, _logindata.rememberMe);
+                    this.createLoginSession(res.userId, res.userType, _logindata.rememberMe);
                 return res;
             })
             .catch(this.handleError);
@@ -69,7 +78,7 @@ export class DataService {
                 if (x != null) {
                     let res = x.json() as _MC.registrationResponse;
                     if (res.isRegistered)
-                        this.createLoginSession(res.userId, false);
+                        this.createLoginSession(res.userId, res.userType, false);
                     return res;
                 }
             }).catch(
@@ -83,6 +92,7 @@ export class DataService {
             .then(x => x.json())
             .catch(this.handleError)
     }
+    //#endregion
 
     getMealOptions(): Promise<_MC.MealOptions[]> {
         return this.http.get(`${this.baseUrl}/getMealOptions`, { headers: this._headers }).toPromise()
@@ -102,6 +112,18 @@ export class DataService {
             ).catch(this.handleError);
     }
 
+    updateOrderStatus_Vendor(orderid: string, _isAccepted:boolean): Promise<boolean> {
+        const url = `${this.baseUrl}/${_isAccepted?'acceptOrder':'rejectOrder'}`;
+        return this.http.post(url, { id: orderid }, { headers: this._headers }).toPromise()
+            .then(res => {
+                if (res != null) {
+                    // console.log(res);
+                    return res.json() as boolean;
+                }
+            }
+            ).catch(this.handleError);
+    }
+    
     cancelOrder(orderid: string): Promise<boolean> {
         const url = `${this.baseUrl}/cancelOrder`;
         return this.http.post(url, { id: orderid }, { headers: this._headers }).toPromise()
@@ -116,6 +138,18 @@ export class DataService {
 
     getUserOrderList(userid: string): Promise<_MC.Order[]> {
         return this.http.get(`${this.baseUrl}/getUserOrders/${userid}`, { headers: this._headers }).toPromise()
+            .then(res => res.json() as _MC.Order[])
+            .catch(this.handleError);
+    }
+
+    getAllOrders(): Promise<_MC.Order4Dashboard[]> {
+        return this.http.get(`${this.baseUrl}/getAllOrders`, { headers: this._headers }).toPromise()
+            .then(res => res.json() as _MC.Order4Dashboard[])
+            .catch(this.handleError);
+    }
+
+    getFilterdOrders(_filterObj:_MC.Order4Dashboard): Promise<_MC.Order[]> {
+        return this.http.post(`${this.baseUrl}/getFilteredOrders`,_filterObj, { headers: this._headers }).toPromise()
             .then(res => res.json() as _MC.Order[])
             .catch(this.handleError);
     }

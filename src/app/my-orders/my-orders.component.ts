@@ -14,7 +14,7 @@ export class MyOrdersComponent implements OnInit {
     constructor(private dataservice: DataService, private router: Router) { }
 
     ngOnInit() {
-        this.dataservice.getUserOrderList(this.dataservice.getCurrentUserId())
+        this.dataservice.getUserOrderList(this.dataservice.getCurrentUser().userId)
             .then(x => {
                 this.orderList = x.sort((a, b) => a.CreatedOn < b.CreatedOn ? 1 : 0);
                 // console.log(this.orderList[0].getTotalCost());

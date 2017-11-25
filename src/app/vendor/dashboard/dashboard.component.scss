@@ -1,0 +1,47 @@
+.dashboard-wrapper {
+    display: table;
+    margin: auto;
+	.tile {
+        display: block;
+		width: calc(50% - 30px);
+		width: 300px;
+		height: 300px;
+		margin: 15px;
+		float: left;
+        text-align: center;
+        transition: all .3s ease;
+		&:nth-child(2n+1) {
+			clear: left;
+        }
+        &:hover, &:focus{
+            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.27);
+            text-decoration: none;
+        }
+		&.new {
+			background: #6ef53d;
+		}
+		&.accepted {
+			background: #ffbf00;
+		}
+		&.cancelled {
+			background: #ff2c29;
+		}
+		&.rejected {
+			background: gray;
+		}
+		&.completed {
+			background: #33adeb;
+		}
+		.thumb {
+			color: white;
+            font-size: 4em;
+            margin: 20px 0 0;
+            display: inline-block;
+            text-shadow: 0 0 7px rgba(0, 0, 0, 0.33);
+		}
+		&-detail {
+            color: white;
+            font-size: 2.5em;
+        }
+	}
+}

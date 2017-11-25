@@ -18,7 +18,7 @@ export class ChangePasswordComponent implements OnInit {
     currentPassword: string;
     _data: changePasswordData = new changePasswordData();
     constructor(private dataService: DataService) {
-        this._data.userId = this.dataService.getCurrentUserId()
+        this._data.userId = this.dataService.getCurrentUser().userId
     }
 
     ngOnInit() {

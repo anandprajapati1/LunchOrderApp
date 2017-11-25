@@ -24,10 +24,10 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
         //>> Redirect to login page if not logged in
-        if (!this.dataService.isLoggedIn()) {
-            this.router.navigate(['/login']);
-            return
-        }
+        // if (!this.dataService.isLoggedIn()) {
+        //     this.router.navigate(['/login']);
+        //     return
+        // }
 
         this.dataService.getMealOptions().then(x => {
             if (x.length) this.mealOptions = x; //x.slice(0, 5);
@@ -74,14 +74,19 @@ export class HomeComponent implements OnInit {
         this._cartTotal -= item.Price;
     }
     submitForm(): void {
+        if (this._cart.length == 0) {
+            alert("Cart is empty.")
+            return
+        }
+
         let orderDetail: Order = new Order();
-        orderDetail.CreatedBy = this.dataService.getCurrentUserId();
+        orderDetail.CreatedBy = this.dataService.getCurrentUser().userId;
         orderDetail.OrderItems = this._cart;
 
         this.dataService.placeOrder(orderDetail).then(x => {
             if (x._id !== "") {
                 //redirect ot Thank you page
-                this.router.navigate(['/thankyou', x._id]);
+                this.router.navigate(['user', 'thankyou', x._id]);
                 return false;
             }
         });

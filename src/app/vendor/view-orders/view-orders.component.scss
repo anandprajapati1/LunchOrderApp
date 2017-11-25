@@ -1,0 +1,112 @@
+.container{
+    transform: translate3d(0,0,0);
+}
+.filter {
+    padding: 10px 0;
+    border: 1px solid black;
+    border-width: 1px 0;
+}
+.list-info{
+    font-weight: bold;
+    margin: 10px 0 0;
+    display: block;
+}
+.order-filter{
+    margin: 0;
+    select{
+        width: 200px;
+        font: inherit;
+    }
+}
+.order-item {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 15px 0;
+    background: white;
+    overflow: hidden;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    border: 1px solid rgba(161, 54, 218, 0.2);
+    
+    &:hover {
+        // background: rgba(161, 54, 218, 0.4);
+        background: white;    
+        transform: scale(1.02,1.1);
+        box-shadow: 0 0 10px 0 rgba(161, 54, 218, 0.4);
+    }
+    .order-thumbnail{
+        float: left;
+        width: 50px;
+        height: 50px;
+    }
+    .order-detail {
+        display: inline-block;
+        width: calc(100% - 110px);
+        padding: 0 10px;
+        span{
+            float: left;
+        }
+        &-text{
+            // max-width: 150px;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            .badge{
+                width: 16.5px;
+                height: 16.5px;
+                border-radius: 50%;
+                font-weight: 400;
+                font-style: normal;
+            }
+        }
+    }
+    // .order-status .badge {
+    //     border-radius: 0;
+    //     font-weight: normal;
+    //     text-transform: uppercase;
+    // }
+    .order-price {
+        font-size: 1em;
+    }
+    .order-id {
+        font-weight: 500;
+        font-size: 0.8em;
+    }
+    .action-button {
+        // position: absolute;
+        // top: 0;
+        // right: -25px;
+        // width: 25px;
+        // height: 100%;
+        // text-align: center;
+        -webkit-transition: all .2s ease-in-out;
+        -moz-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        &>a {
+            text-decoration: none;
+            padding: 0;
+            cursor: pointer;
+            display: table;
+            margin: 10px;
+            padding: 4px 10px;
+            color: white;
+            &.repeat-order {
+                color: limegreen;
+            }
+            &.disabled {
+                color: gray;
+                cursor: not-allowed;
+            }
+        }
+        &-msg{
+            font-weight: 300;
+        }
+    }
+    &:hover .action-button,
+    &:focus .action-button {
+        // right: 10px;
+    }
+}
