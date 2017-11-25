@@ -26,6 +26,9 @@
 		&.cancelled {
 			background: #ff2c29;
 		}
+		&.rejected {
+			background: gray;
+		}
 		&.completed {
 			background: #33adeb;
 		}

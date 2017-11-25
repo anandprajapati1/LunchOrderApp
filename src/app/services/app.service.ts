@@ -112,6 +112,18 @@ export class DataService {
             ).catch(this.handleError);
     }
 
+    updateOrderStatus_Vendor(orderid: string, _isAccepted:boolean): Promise<boolean> {
+        const url = `${this.baseUrl}/${_isAccepted?'acceptOrder':'rejectOrder'}`;
+        return this.http.post(url, { id: orderid }, { headers: this._headers }).toPromise()
+            .then(res => {
+                if (res != null) {
+                    // console.log(res);
+                    return res.json() as boolean;
+                }
+            }
+            ).catch(this.handleError);
+    }
+    
     cancelOrder(orderid: string): Promise<boolean> {
         const url = `${this.baseUrl}/cancelOrder`;
         return this.http.post(url, { id: orderid }, { headers: this._headers }).toPromise()

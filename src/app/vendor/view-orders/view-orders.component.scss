@@ -8,8 +8,15 @@
 }
 .list-info{
     font-weight: bold;
-    margin: 10px 0;
-    display: inline-block;
+    margin: 10px 0 0;
+    display: block;
+}
+.order-filter{
+    margin: 0;
+    select{
+        width: 200px;
+        font: inherit;
+    }
 }
 .order-item {
     margin-top: 5px;

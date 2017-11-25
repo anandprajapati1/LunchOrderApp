@@ -17,13 +17,13 @@
 			<div>{{_pendingorders}}</div>
 		</div>
 	</a>
-	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'CANCELLED'}" class="tile cancelled" title="Cancelled by user/Rejected by you">
+	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'CANCELLED'}" class="tile cancelled" title="Cancelled by user">
 		<span class="thumb">
 			<i class="fa fa-ban" aria-hidden="true"></i>
 		</span>
 		<div class="tile-detail">
 			Cancelled
-			<div>{{_cacelledorders + _rejectedorders}}
+			<div>{{_cacelledorders}}
 			</div>
 		</div>
 	</a>
@@ -34,6 +34,15 @@
 		<div class="tile-detail">
 			Completed
 			<div>{{_completedorders}}</div>
+		</div>
+	</a>
+	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'REJECTED'}" class="tile rejected" title="Rejected by you">
+		<span class="thumb">
+			<i class="fa fa-check-square-o" aria-hidden="true"></i>
+		</span>
+		<div class="tile-detail">
+			Rejected
+			<div>{{_rejectedorders}}</div>
 		</div>
 	</a>
 </div>
