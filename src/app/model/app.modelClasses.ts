@@ -9,7 +9,7 @@ export class Order {
     _id?: string;
     // OptionId: string = "";
     // Count: number = 0;
-    // Remarks: string = "";
+    EmailId:string="";
     IsAccepted?: boolean = null;
     IsPaid: boolean = false;
     IsActive: boolean = true;

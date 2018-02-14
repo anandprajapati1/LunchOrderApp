@@ -7,8 +7,8 @@ import * as _MC from '../model/app.modelClasses';
 
 @Injectable()
 export class DataService {
-    // private baseUrl = 'https://63f743eb.ngrok.io';  // URL to web api
-    private baseUrl = 'http://localhost:3000';  // URL to web api
+    // private baseUrl = 'https://mealappserver.appspot.com';  // URL to web api
+    private baseUrl = 'http://localhost:8080';  // URL to web api
     private _headers = new Headers({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'localhost:*' });
     private isUserLoggedInKey: string = "_iuli";
     private lastLoginDateKey: string = "lastLogin";
