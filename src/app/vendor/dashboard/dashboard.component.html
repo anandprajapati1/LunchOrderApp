@@ -1,3 +1,4 @@
+<h4 class="page-title" *ngIf="_neworders+_pendingorders>0">Some new orders are placed! Please have a look.</h4>
 <div class="dashboard-wrapper clearfix">
 	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'NEW'}" class="tile new" title="New order requests">
 		<span class="thumb">
@@ -38,7 +39,7 @@
 	</a>
 	<a [routerLink]="['/vendor','orders']" [queryParams]="{filterby:'REJECTED'}" class="tile rejected" title="Rejected by you">
 		<span class="thumb">
-			<i class="fa fa-check-square-o" aria-hidden="true"></i>
+            <i class="fa fa-times" aria-hidden="true"></i>
 		</span>
 		<div class="tile-detail">
 			Rejected
