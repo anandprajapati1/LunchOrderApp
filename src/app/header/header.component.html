@@ -7,6 +7,9 @@
                 </a>
                 <ul class="navbar-menu" *ngIf="_currectUser">
                     <li class="navbar-menu-item" *ngIf="!_isVendor">
+                        <a [routerLink]="['user','home']">Home</a>
+                    </li>
+                    <li class="navbar-menu-item" *ngIf="!_isVendor">
                         <a [routerLink]="['user','orders']">My Orders</a>
                     </li>
                     <li class="navbar-menu-item" *ngIf="_isVendor">
@@ -23,7 +26,7 @@
                     <a class="btn btn-default action-button login" [routerLink]="['/login']" *ngIf="!_currectUser">Log In</a>
                     <a class="btn btn-default action-button" role="button" [routerLink]="['/register']" *ngIf="!_currectUser">Sign Up</a>
 
-                    <a class="btn btn-default action-button" [routerLink]="['user','profile']" *ngIf="_currectUser && !_isVendor">My Profile</a>
+                    <a class="btn btn-default action-button" [routerLink]="_isVendor?['vendor','profile']:['user','profile']" *ngIf="_currectUser">My Profile</a>
                     <a class="btn btn-default action-button" role="button" (click)="_logoutClick()" *ngIf="_currectUser">Log Out</a>
                 </span>
             </div>
