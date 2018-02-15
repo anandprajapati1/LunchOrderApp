@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
         //>> Redirect to home page if already logged in
         if (this.dataservice.isLoggedIn()) {
-            this._router.navigate(['/home']);
+            this._router.navigate(['user', 'home']);
         }
     }
 
@@ -30,8 +30,8 @@ export class RegisterComponent implements OnInit {
             }
             else if (x.isRegistered) {
                 let _status: userLoginStatus = { userId: x.userId, userType: x.userType }
-                this._router.navigate(['/home'])
                 this.sharedservice.emitLoginStatus(_status);
+                this._router.navigate(['user', 'home'])
             }
         })
             .catch(() => this.serverError = "Unable to register, please try after some time.")

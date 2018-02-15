@@ -77,7 +77,9 @@ export class DataService {
             .then(x => {
                 if (x != null) {
                     let res = x.json() as _MC.registrationResponse;
-                    if (res.isRegistered)
+                if (!res.userType)
+                    res.userType = _MC.usertTypeEnum.DEFAULT
+                if (res.isRegistered)
                         this.createLoginSession(res.userId, res.userType, false);
                     return res;
                 }

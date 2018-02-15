@@ -55,7 +55,7 @@ export class registrationResponse {
     isAlreadyRegistered: boolean;
     isRegistered: boolean;
     userId?: string;
-    readonly userType: usertTypeEnum = usertTypeEnum.DEFAULT;
+    userType: usertTypeEnum = usertTypeEnum.DEFAULT;
 }
 
 export enum usertTypeEnum {
