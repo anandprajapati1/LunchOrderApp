@@ -1415,7 +1415,7 @@ var SharedService = /** @class */ (function () {
 /***/ "../../../../../src/app/thankyou.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\r\n    <div class=\"alert alert-success\">\r\n        <h3>Thank You for your order!</h3>\r\n        <p>Your order id is <b>{{_orderid}}</b></p>\r\n    </div>\r\n    <button class=\"btn btn-success\" (click)=\"goHome()\" role=\"button\">Go Back</button>\r\n    <button class=\"btn btn-success\" [routerLink]=\"['user','orders']\" role=\"button\">View All Orders</button>\r\n</div>\r\n"
+module.exports = "<div class=\"wrapper\">\r\n    <div class=\"alert alert-success\">\r\n        <h3>Thank You for your order!</h3>\r\n        <p>Your order id is <b>{{_orderid}}</b></p>\r\n    </div>\r\n    <button class=\"btn btn-success\" (click)=\"goHome()\" role=\"button\">Go Back</button>\r\n    <button class=\"btn btn-success\" (click)=\"seeAllOrders()\" role=\"button\">View All Orders</button>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1458,7 +1458,10 @@ var ThankYouComponent = /** @class */ (function () {
         });
     };
     ThankYouComponent.prototype.goHome = function () {
-        this.router.navigate(['home']);
+        this.router.navigate(['user', 'home']);
+    };
+    ThankYouComponent.prototype.seeAllOrders = function () {
+        this.router.navigate(['user', 'orders']);
     };
     ThankYouComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["o" /* Component */])({
