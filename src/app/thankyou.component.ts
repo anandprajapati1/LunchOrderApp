@@ -44,6 +44,9 @@ export class ThankYouComponent implements OnInit {
   }
 
   goHome(): void {
-    this.router.navigate(['home']);
+    this.router.navigate(['user','home']);
+  }
+  seeAllOrders(): void {
+    this.router.navigate(['user','orders']);
   }
 }

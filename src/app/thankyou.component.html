@@ -4,5 +4,5 @@
         <p>Your order id is <b>{{_orderid}}</b></p>
     </div>
     <button class="btn btn-success" (click)="goHome()" role="button">Go Back</button>
-    <button class="btn btn-success" [routerLink]="['user','orders']" role="button">View All Orders</button>
+    <button class="btn btn-success" (click)="seeAllOrders()" role="button">View All Orders</button>
 </div>
