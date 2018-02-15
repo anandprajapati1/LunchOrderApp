@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from './../services/app.service';
+import { userLoginStatus, usertTypeEnum } from 'app/model/app.modelClasses';
 
 @Component({
 	selector: 'app-profile',
@@ -15,10 +17,15 @@ export class ProfileComponent implements OnInit {
 		isActive: false,
 		linkText: "Delete account"
 	}]
-	constructor() { }
+	_currectUser: userLoginStatus;
+    _isVendor: boolean = false;
+    constructor(private _dataservice: DataService) {
+        this._currectUser = this._dataservice.getCurrentUser();
+    }
 
 	ngOnInit() {
-	}
+        this._isVendor = this._currectUser.userType == usertTypeEnum.VENDOR
+    }
 
 	selectTab(t) {
 		this.tabState.forEach((x) => x.isActive = false)

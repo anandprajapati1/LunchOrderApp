@@ -32,6 +32,7 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: '/vendor/dashboard', pathMatch: 'full' },
             { path: 'dashboard', component: DashboardComponent },
+            { path: 'profile', component: ProfileComponent },
             { path: 'orders', component: ViewOrdersComponent }
         ]
     },

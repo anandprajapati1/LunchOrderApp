@@ -2,8 +2,8 @@
 @import "../../../node_modules/bootstrap/scss/mixins/_breakpoints.scss";
 
 .profile-component {
-    color: white;
-	.tab-header {
+    $component-color:white;
+    .tab-header {
 		padding: 0;
 		margin: 15px -15px 15px 0;
 		&>li {
@@ -15,7 +15,7 @@
 			-moz-transition: all ease .3s;
 			transition: all ease .3s;
 			&.active {
-				background: rgba(255, 255, 255, 0.35);
+				background: rgba($component-color, 0.35);
 			}
 			a {
 				display: block;
@@ -25,7 +25,7 @@
 		}
 	}
 	.tab-wrapper {
-		border-left: 1px solid rgba(255, 255, 255, 0.5);
+		border-left: 1px solid rgba($component-color, 0.5);
 		padding: 15px 25px;
 		@include media-breakpoint-up(md) {
 			padding: 15px 40px;
@@ -36,5 +36,14 @@
 		.tab-body {
 			&.active {}
 		}
-	}
+    }
+    
+    &.vendor-profile{
+        .tab-header>li.active{
+            background: rgba(#a137d9, 0.35);
+        }
+        .tab-wrapper {
+            border-left: 1px solid rgba(#a137d9, 0.5);
+        }
+    }
 }
